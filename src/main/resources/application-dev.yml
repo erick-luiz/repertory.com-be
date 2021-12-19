@@ -1,0 +1,18 @@
+server:
+  port: 8000
+  
+spring:
+  datasource:
+    hikari:
+      connectionTimeout: 20000
+      maximumPoolSize: 5
+    url: jdbc:postgresql://localhost:5432/repertory
+    username: postgres
+    password: admin
+    hibernate:
+      ddl-auto: update
+
+repertory:
+  auth:
+    user: admin
+    password: admin

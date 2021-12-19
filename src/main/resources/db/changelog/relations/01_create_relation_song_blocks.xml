@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+	
+	<changeSet id="01_create_relation_song_blocks" author="erick">
+		<sql>
+			CREATE TABLE IF NOT EXISTS  song_blocks (
+				    block_id bigint NOT NULL,
+				    song_id bigint NOT NULL,
+				    CONSTRAINT fk_song_block FOREIGN KEY
+         				(song_id) REFERENCES song (song_id),
+        			CONSTRAINT fk_block_song FOREIGN KEY
+        				(block_id) REFERENCES block (block_id) ON DELETE CASCADE  
+			);
+		</sql>
+		<rollback>
+			<sql>
+				DROP TABLE IF EXISTS song_blocks;
+			</sql>
+		</rollback>
+	</changeSet>
+
+</databaseChangeLog>

@@ -1,0 +1,17 @@
+spring:
+  datasource:
+    hikari:
+      connectionTimeout: 20000
+      maximumPoolSize: 5
+    url: ${database-url}
+    username: ${database-username}
+    password: ${database-password}
+    hibernate:
+      ddl-auto: none
+  # Liquibase...   liquibase:    enabled: true
+    change-log: classpath:db/changelog/changelog.xml
+
+repertory:
+  auth:
+    user: ${AUTH_USER}
+    password: ${AUTH_PASSWORD}

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+	
+	<changeSet id="02_create_relation_block_repertories" author="erick">
+		<sql>
+			CREATE TABLE IF NOT EXISTS  repertory_blocks (
+				    repertory_id bigint NOT NULL,
+				    block_id bigint NOT NULL,
+				    CONSTRAINT fk_repertory_block FOREIGN KEY
+         				(repertory_id) REFERENCES repertory (repertory_id),
+        			CONSTRAINT fk_block_repertory FOREIGN KEY
+        				(block_id) REFERENCES block (block_id)
+			);
+		</sql>
+		<rollback>
+			<sql>
+				DROP TABLE IF EXISTS repertory_blocks;
+			</sql>
+		</rollback>
+	</changeSet>
+
+</databaseChangeLog>

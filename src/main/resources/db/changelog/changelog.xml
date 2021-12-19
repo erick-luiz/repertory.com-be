@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+	http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd
+    http://www.liquibase.org/xml/ns/pro 
+    http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.1.xsd">
+	
+	<!-- General -->
+	<include file="/db/changelog/general/01_create_hibernate_sequence.xml"/>
+	<include file="/db/changelog/general/02_create_song_sequence.xml"/>
+	<include file="/db/changelog/general/03_create_block_sequence.xml"/>
+	<include file="/db/changelog/general/04_create_repertory_sequence.xml"/>
+	
+	<!-- Music -->
+	<include file="/db/changelog/song/01_create_song_table.xml"/>
+	
+	<!-- Block -->
+	<include file="/db/changelog/block/01_create_block_table.xml"/>
+	
+	<!-- Repertory -->
+	<include file="/db/changelog/repertory/01_create_repertory_table.xml"/>
+	
+	<!-- Relations [needs to be the last instructions] -->
+	<include file="/db/changelog/relations/01_create_relation_song_blocks.xml"/>
+	<include file="/db/changelog/relations/02_create_relation_block_repertories.xml"/>
+
+</databaseChangeLog>
